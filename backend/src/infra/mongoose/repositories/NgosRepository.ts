@@ -11,14 +11,13 @@ export class NgosRepository implements INgosRepository {
   }
   async create(data: ICreateNgoDTO): Promise<INgo> {
     const { name, email, whatsapp, city, uf } = data;
-    const ngo = new Ngo({
+    const ngo = await this.repository.create({
       name,
       email,
       whatsapp,
       city,
       uf,
     });
-    await ngo.save();
     return ngo;
   }
 }
