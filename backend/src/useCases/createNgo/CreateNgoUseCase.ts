@@ -13,12 +13,21 @@ export class CreateNgoUseCase {
   ) {}
   async execute(data: ICreateNgoDTO): Promise<INgo> {
     const { name, email, whatsapp, city, uf } = data;
+    let ngoAlreadyExists = null;
 
     if (!name) {
       throw new AppError("Name is required!");
     }
+    ngoAlreadyExists = await this.ngosRepository.findByName(name);
+    if (ngoAlreadyExists) {
+      throw new AppError("Name already exist!");
+    }
     if (!email) {
       throw new AppError("E-mail is required!");
+    }
+    ngoAlreadyExists = await this.ngosRepository.findByEmail(email);
+    if (ngoAlreadyExists) {
+      throw new AppError("E-mail already exist!");
     }
     if (!whatsapp) {
       throw new AppError("Whatsapp is required!");
