@@ -18,7 +18,7 @@ export class CreateNgoUseCase {
       throw new AppError("Name is required!");
     }
     if (!email) {
-      throw new AppError("Email is required!");
+      throw new AppError("E-mail is required!");
     }
     if (!whatsapp) {
       throw new AppError("Whatsapp is required!");
