@@ -7,7 +7,7 @@ import { AppError } from "../../../src/erros/AppErros";
 
 container.registerSingleton<INgosRepository>("NgosRepository", NgosRepository);
 
-describe("CreateUserUseCase Tests", () => {
+describe("CreateNgoUseCase Tests", () => {
   let createNgoUseCase: CreateNgoUseCase;
 
   const ngoMock = {
@@ -21,7 +21,6 @@ describe("CreateUserUseCase Tests", () => {
 
   beforeEach(() => {
     createNgoUseCase = container.resolve(CreateNgoUseCase);
-    // User.prototype.save = jest.fn();
   });
 
   describe("createNgoUseCase Tests", () => {
