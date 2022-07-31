@@ -9,16 +9,27 @@ export class NgosRepository implements INgosRepository {
   constructor() {
     this.repository = Ngo;
   }
+  async findByName(name: string): Promise<INgo> {
+    const ngo = await this.repository.findOne({
+      name,
+    });
+    return ngo;
+  }
+  async findByEmail(email: string): Promise<INgo> {
+    const ngo = await this.repository.findOne({
+      email,
+    });
+    return ngo;
+  }
   async create(data: ICreateNgoDTO): Promise<INgo> {
     const { name, email, whatsapp, city, uf } = data;
-    const ngo = new Ngo({
+    const ngo = await this.repository.create({
       name,
       email,
       whatsapp,
       city,
       uf,
     });
-    await ngo.save();
     return ngo;
   }
 }

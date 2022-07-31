@@ -1,9 +1,11 @@
 import { Router } from "express";
 
-// import { inputRouter } from './input.routes';
+import { CreateNgoController } from "../../useCases/createNgo/CreateNgoController";
+
+const createNgoController = new CreateNgoController();
 
 const router = Router();
 
-// router.use('/input', inputRouter);
+router.post("/ngo", createNgoController.handle);
 
 export { router };

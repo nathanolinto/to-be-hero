@@ -4,6 +4,9 @@ import express, { Request, Response, NextFunction } from "express";
 import { AppError } from "../erros/AppErros";
 import { router } from "./routes";
 import "../container";
+import { connectDb } from "../services/mongoose";
+
+connectDb("mongodb://root:hero@localhost:27017/to_be_hero?authSource=admin");
 
 const app = express();
 app.use(express.json());
