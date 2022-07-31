@@ -20,14 +20,14 @@ export class CreateNgoUseCase {
     }
     ngoAlreadyExists = await this.ngosRepository.findByName(name);
     if (ngoAlreadyExists) {
-      throw new AppError("Name already exist!");
+      throw new AppError("Ngo already exists!");
     }
     if (!email) {
       throw new AppError("E-mail is required!");
     }
     ngoAlreadyExists = await this.ngosRepository.findByEmail(email);
     if (ngoAlreadyExists) {
-      throw new AppError("E-mail already exist!");
+      throw new AppError("E-mail already exists!");
     }
     if (!whatsapp) {
       throw new AppError("Whatsapp is required!");
