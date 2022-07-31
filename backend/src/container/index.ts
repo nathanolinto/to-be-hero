@@ -1,9 +1,6 @@
 import { container } from "tsyringe";
 
-// import { UsersRepository } from "../modules/channels/infra/mongoose/repositories/UsersRepository";
-// import { IUsersRepository } from "../modules/channels/repositories/IUsersRepository";
+import { NgosRepository } from "../infra/mongoose/repositories/NgosRepository";
+import { INgosRepository } from "../repositories/INgosRepository";
 
-// container.registerSingleton<IUsersRepository>(
-//   'UsersRepository',
-//   UsersRepository,
-// );
+container.registerSingleton<INgosRepository>("NgosRepository", NgosRepository);
