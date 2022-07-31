@@ -9,6 +9,13 @@ export class NgosRepository implements INgosRepository {
   constructor() {
     this.repository = Ngo;
   }
+  async findById(id: string): Promise<INgo> {
+    const idObjectId = new Types.ObjectId(id);
+    const ngo = await this.repository.findOne({
+      _id: idObjectId,
+    });
+    return ngo;
+  }
   async findByName(name: string): Promise<INgo> {
     const ngo = await this.repository.findOne({
       name,
