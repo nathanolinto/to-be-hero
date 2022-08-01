@@ -9,7 +9,7 @@ export class ListIncidentsByNgoIdController {
       ListIncidentsByNgoIdUseCase
     );
     const incidents = await listIncidentsByNgoIdUseCase.execute(
-      request.params.ongId
+      request.params.ngoId
     );
     return response.status(200).json(incidents);
   }
