@@ -3,4 +3,5 @@ import { ICreateIncidentDTO } from "../dtos/ICreateIncidentDTO";
 
 export interface IIncidentsRepository {
   create(data: ICreateIncidentDTO): Promise<IIncident>;
+  listByNgoId(ngo: string): Promise<IIncident[]>;
 }

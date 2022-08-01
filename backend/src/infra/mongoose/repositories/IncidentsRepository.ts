@@ -9,6 +9,11 @@ export class IncidentsRepository implements IIncidentsRepository {
   constructor() {
     this.repository = Incident;
   }
+  async listByNgoId(ngo: string): Promise<IIncident[]> {
+    const ngoObjectId = new Types.ObjectId(ngo);
+    const incidents = await this.repository.find({ ngo: ngoObjectId });
+    return incidents;
+  }
   async create(data: ICreateIncidentDTO): Promise<IIncident> {
     const { title, description, value, ngo } = data;
     const ngoObjectId = new Types.ObjectId(ngo);
