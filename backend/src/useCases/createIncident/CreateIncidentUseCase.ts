@@ -3,7 +3,6 @@ import { inject, injectable } from "tsyringe";
 import { ICreateIncidentDTO } from "../../dtos/ICreateIncidentDTO";
 import { IIncident } from "../../infra/mongoose/entities/Incident";
 import { IncidentsRepository } from "../../infra/mongoose/repositories/IncidentsRepository";
-import { INgo } from "../../infra/mongoose/entities/Ngo";
 import { NgosRepository } from "../../infra/mongoose/repositories/NgosRepository";
 import { AppError } from "../../erros/AppErros";
 
