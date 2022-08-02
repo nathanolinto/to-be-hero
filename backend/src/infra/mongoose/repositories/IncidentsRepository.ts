@@ -9,6 +9,16 @@ export class IncidentsRepository implements IIncidentsRepository {
   constructor() {
     this.repository = Incident;
   }
+  async findById(id: string): Promise<IIncident> {
+    const idObjectId = new Types.ObjectId(id);
+    const incident = await this.repository.findOne({ _id: idObjectId });
+    return incident;
+  }
+  async delete(id: string): Promise<Number> {
+    const idObjectId = new Types.ObjectId(id);
+    const deleteIncident = await this.repository.deleteOne({ _id: idObjectId });
+    return deleteIncident.deletedCount;
+  }
   async listByNgoId(ngo: string): Promise<IIncident[]> {
     const ngoObjectId = new Types.ObjectId(ngo);
     const incidents = await this.repository.find({ ngo: ngoObjectId });
