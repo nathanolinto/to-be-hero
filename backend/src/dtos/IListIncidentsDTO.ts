@@ -1,8 +1,8 @@
 import { IIncident } from "../infra/mongoose/entities/Incident";
 
 export interface IListIncidentsParamsDTO {
-  page: number;
-  limit: number;
+  page?: number;
+  limit?: number;
 }
 
 export interface IListIncidentsDTO {

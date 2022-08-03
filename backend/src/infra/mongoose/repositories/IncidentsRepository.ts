@@ -17,7 +17,7 @@ export class IncidentsRepository implements IIncidentsRepository {
     const { limit, page } = data;
     const incidents = await this.repository
       .find()
-      .limit(limit * 1)
+      .limit(limit)
       .skip((page - 1) * limit)
       .sort({ created_at: -1 });
     const count = await this.repository.countDocuments();
