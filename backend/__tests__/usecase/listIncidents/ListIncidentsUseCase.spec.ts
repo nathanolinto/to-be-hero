@@ -2,9 +2,7 @@ import { container } from "tsyringe";
 
 import { IIncidentsRepository } from "../../../src/repositories/IIncidentsRepository";
 import { IncidentsRepository } from "../../../src/infra/mongoose/repositories/IncidentsRepository";
-import { NgosRepository } from "../../../src/infra/mongoose/repositories/NgosRepository";
 import { ListIncidentsUseCase } from "../../../src/useCases/listIncidents/ListIncidentsUseCase";
-import { AppError } from "../../../src/erros/AppErros";
 
 container.registerSingleton<IIncidentsRepository>(
   "IncidentsRepository",
@@ -38,7 +36,7 @@ describe("CreateIncidentUseCase Tests", () => {
         ngo: "ong",
       },
     ],
-    total: 3,
+    totalRecords: 3,
     totalPages: 1,
     page: 1,
   };
@@ -56,7 +54,7 @@ describe("CreateIncidentUseCase Tests", () => {
       const incidents = await listIncidentsUseCase.execute({});
 
       expect(incidents).toHaveProperty("records");
-      expect(incidents.total).toEqual(3);
+      expect(incidents.totalRecords).toEqual(3);
     });
   });
 });

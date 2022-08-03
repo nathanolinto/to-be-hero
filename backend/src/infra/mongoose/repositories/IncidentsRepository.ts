@@ -23,7 +23,7 @@ export class IncidentsRepository implements IIncidentsRepository {
     const count = await this.repository.countDocuments();
     return {
       records: incidents,
-      total: count,
+      totalRecords: count,
       totalPages: Math.ceil(count / limit),
       page,
     };

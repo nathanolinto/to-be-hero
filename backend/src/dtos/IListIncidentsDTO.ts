@@ -7,7 +7,7 @@ export interface IListIncidentsParamsDTO {
 
 export interface IListIncidentsDTO {
   records: IIncident[];
-  total: number;
+  totalRecords: number;
   totalPages: number;
   page: number;
 }
