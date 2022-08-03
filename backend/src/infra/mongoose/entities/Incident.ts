@@ -1,7 +1,6 @@
 import { Schema, model, Types } from "mongoose";
 
 interface IIncident {
-  _id?: Types.ObjectId;
   title: string;
   description: string;
   value: number;
@@ -14,7 +13,7 @@ const incidentSchema: Schema = new Schema<IIncident>(
     title: { type: String, required: true },
     description: { type: String, required: true },
     value: { type: Number, required: true },
-    ngo: { type: Schema.Types.ObjectId, required: true },
+    ngo: { type: Schema.Types.ObjectId, ref: "ngos", required: true },
     tags: [String],
   },
   {
