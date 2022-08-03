@@ -3,11 +3,30 @@ import { Model, Types } from "mongoose";
 
 import { IIncidentsRepository } from "../../../repositories/IIncidentsRepository";
 import { IIncident, Incident } from "../entities/Incident";
+import {
+  IListIncidentsDTO,
+  IListIncidentsParamsDTO,
+} from "../../../dtos/IListIncidentsDTO";
 
 export class IncidentsRepository implements IIncidentsRepository {
   private repository: Model<IIncident>;
   constructor() {
     this.repository = Incident;
+  }
+  async list(data: IListIncidentsParamsDTO): Promise<IListIncidentsDTO> {
+    const { limit, page } = data;
+    const incidents = await this.repository
+      .find()
+      .limit(limit)
+      .skip((page - 1) * limit)
+      .sort({ created_at: -1 });
+    const count = await this.repository.countDocuments();
+    return {
+      records: incidents,
+      total: count,
+      totalPages: Math.ceil(count / limit),
+      page,
+    };
   }
   async findById(id: string): Promise<IIncident> {
     const idObjectId = new Types.ObjectId(id);

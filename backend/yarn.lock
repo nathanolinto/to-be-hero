@@ -693,6 +693,13 @@
   resolved "https://registry.yarnpkg.com/@types/mime/-/mime-3.0.0.tgz#e9a9903894405c6a6551f1774df4e64d9804d69c"
   integrity sha512-fccbsHKqFDXClBZTDLA43zl0+TbxyIwyzIzwwhvoJvhNjOErCdeX2xJbURimv2EbSVUGav001PaCJg4mZxMl4w==
 
+"@types/mongoose-paginate-v2@^1.6.5":
+  version "1.6.5"
+  resolved "https://registry.yarnpkg.com/@types/mongoose-paginate-v2/-/mongoose-paginate-v2-1.6.5.tgz#907bfec2bf3fc83c1c37c9603fca8bc0669ce9ec"
+  integrity sha512-OdnsqewLwCtZvExUHuL+KDVlZ6OdnzGcUdPpEqMRVKZ6mWy7fgnt1IkLSs8Zugv5cUTLVT46hjmL2OPWtml1Rw==
+  dependencies:
+    mongoose-paginate-v2 "*"
+
 "@types/mongoose@^5.11.97":
   version "5.11.97"
   resolved "https://registry.yarnpkg.com/@types/mongoose/-/mongoose-5.11.97.tgz#80b0357f3de6807eb597262f52e49c3e13ee14d8"
@@ -2215,6 +2222,11 @@ mongodb@4.8.1:
     socks "^2.6.2"
   optionalDependencies:
     saslprep "^1.0.3"
+
+mongoose-paginate-v2@*, mongoose-paginate-v2@^1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/mongoose-paginate-v2/-/mongoose-paginate-v2-1.7.0.tgz#989a97160b5aa18b4bb16fb9ac3a80c6c33837ec"
+  integrity sha512-r9bns1sMWRl0QO3YXVZ/uGOL/CYcDXTmapGHlddIgzbfOhVxUWKHKItwJO8rZICF1ooOukLQv8qQLVTc3qSLpQ==
 
 mongoose@*, mongoose@^6.5.0:
   version "6.5.0"
