@@ -1,0 +1,32 @@
+@use '../../global';
+.input {
+    display: flex;
+    width: 100%;
+    color: global.$color-input-text;
+    border: global.$color-gray solid 1px;
+    border-radius: 5px;
+    padding: 8px 10px;
+    margin-top: 8px;
+
+    input {
+        width: 100%;
+        border: 0;
+        outline: none;
+        background: none;
+    }
+
+    label {
+        position: absolute;
+        color: global.$color-input-text;
+        opacity: 0.9;
+        cursor: text;
+        transition: transform 0.2s ease-out;
+        transform-origin: 0% 100%;
+        transform: translateY(0px);
+        &.active {
+            transform: translateY(-16px) scale(0.8);
+            transform-origin: 0 0;
+            background-color: global.$color-background;
+        }
+    }
+}
