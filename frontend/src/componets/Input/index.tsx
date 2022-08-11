@@ -4,41 +4,51 @@ import './input.scss';
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     name: string;
     label: string;
-    value?: string;
+    value: string;
+    setValue: (value: string) => void;
+    setError: (value: boolean) => void;
+    error?: boolean;
+    errorMessage?: string;
 }
 
-function Input({ name, label, value }: InputProps) {
+function Input({ name, label, value, setValue, error, setError, errorMessage }: InputProps) {
     const [isActive, setIsActive] = useState(false);
-    const [inputValue, setInputValue] = useState(value);
 
     const handleSelectInput = useCallback(() => {
-        setIsActive(inputValue ? true : false);
-    }, [inputValue]);
+        setIsActive(value ? true : false);
+    }, [value, setIsActive]);
     const handleOnFocus = () => {
         setIsActive(true);
+        setValue(error ? '' : value);
     };
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setInputValue(event.target.value);
+        setError(false);
+        setValue(event.target.value);
     };
     useEffect(() => {
-        if (inputValue) {
+        if (value) {
             handleSelectInput();
         }
-    }, [handleSelectInput, inputValue]);
+    }, [handleSelectInput, value]);
     return (
-        <div className="input">
-            <label htmlFor={name} className={isActive ? 'active' : ''}>
-                {label}
-            </label>
-            <input
-                id={name}
-                type="text"
-                onFocus={handleOnFocus}
-                onBlur={handleSelectInput}
-                onChange={handleChange}
-                value={inputValue}
-            />
-        </div>
+        <>
+            <div className={`input ${error ? 'error' : ''}`}>
+                <div>
+                    <label htmlFor={name} className={isActive ? 'active' : ''}>
+                        {label}
+                    </label>
+                    <input
+                        id={name}
+                        type="text"
+                        onFocus={handleOnFocus}
+                        onBlur={handleSelectInput}
+                        onChange={handleChange}
+                        value={value}
+                    />
+                </div>
+            </div>
+            {error && <div className="errorMessage">{errorMessage}</div>}
+        </>
     );
 }
 

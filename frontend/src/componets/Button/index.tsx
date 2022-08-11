@@ -1,14 +1,13 @@
-import { ReactNode } from 'react';
+import { ComponentPropsWithRef, ReactNode } from 'react';
 import './button.scss';
 
-interface ButtonProps {
+interface ButtonProps extends ComponentPropsWithRef<'button'> {
     children?: ReactNode;
-    onClick: () => void;
 }
 
-function Button({ onClick, children }: ButtonProps) {
+function Button({ children, ...rest }: ButtonProps) {
     return (
-        <button className="button" onClick={onClick}>
+        <button className="button" {...rest}>
             {children}
         </button>
     );

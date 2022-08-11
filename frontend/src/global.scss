@@ -1,10 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+@use 'variables';
 
-$color-gray: #dcdce6;
-$color-background: #f0f5f5;
-$color-input-text: #333;
-$color-button-text: #fff;
-$color-button: #e02041;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
 * {
     margin: 0;
@@ -15,7 +11,7 @@ $color-button: #e02041;
 
 body {
     font: 400 14px Roboto, sans-serif;
-    background: $color-background;
+    background: variables.$color-background;
     -webkit-font-smoothing: antialiased;
 }
 
